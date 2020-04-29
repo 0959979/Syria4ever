@@ -13578,11 +13578,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ses-9\\Desktop\\SalahGit\\Syria4ever\\meldboek.csproj",
+      "projectUniqueName": "C:\\Users\\ses-9\\Desktop\\meldboek\\meldboek\\meldboek.csproj",
       "projectName": "meldboek",
-      "projectPath": "C:\\Users\\ses-9\\Desktop\\SalahGit\\Syria4ever\\meldboek.csproj",
+      "projectPath": "C:\\Users\\ses-9\\Desktop\\meldboek\\meldboek\\meldboek.csproj",
       "packagesPath": "C:\\Users\\ses-9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ses-9\\Desktop\\SalahGit\\Syria4ever\\obj\\",
+      "outputPath": "C:\\Users\\ses-9\\Desktop\\meldboek\\meldboek\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -63,22 +63,23 @@ namespace meldboek.Controllers
         //}
         public ActionResult Login(string email, string password)
         {
-            if (email != null & password != null)
-            {     
-
-                List<INode> nodeList = new List<INode>();
-            var results = ConnectDb("MATCH (a:Person) WHERE a.Email = '" + email + "' AND a.Password =  '" + password + "' RETURN a");
+            List<INode> nodeList = new List<INode>();
+            var results = ConnectDb("MATCH (a:User) WHERE a.Email = '" + email + "' AND a.Password =  '" + password + "' RETURN a");
             var user = new User();
-            
+            if (email != null && password != null)
+            {
                 nodeList = results.Result;
                 foreach (var record in nodeList)
                 {
                     var nodeprops = JsonConvert.SerializeObject(record.As<INode>().Properties);
                     user = (JsonConvert.DeserializeObject<User>(nodeprops));
                 }
-                Console.WriteLine(user.Email.ToString());
-                if (user != null)
+
+                // check if user is found, if password is wrong no user would be found in database, therfore the user email would equal null
+                if (user.Email != null)
                 {
+                    Console.WriteLine(user.Email.ToString());
+
                     if (user.Password == password)
                     {
                         //Creates a new Identity of the user
@@ -102,15 +103,18 @@ namespace meldboek.Controllers
 
                         return RedirectToAction("Profile", "User");
                     }
-                    
+                    else if(user == null )
+                    {
+                        RedirectToAction("Newsfeed", "User");
+                    }
                     else
                     {
-                         return RedirectToAction("Newsfeed", "User");
+                        RedirectToAction("Newsfeed", "User");
                     }
                 }
                 else if (email != null)
                 {
-                   return  RedirectToAction("Newsfeed", "User");
+                    RedirectToAction("Newsfeed", "User");
                 }
 
             }
